@@ -41,6 +41,7 @@ class Navigation {
         this.setupScrollEffect();
         this.setupSmoothScrolling();
         this.setupActiveLink();
+        this.setupMobileMenu();
     }
     
     setupScrollEffect() {
@@ -96,6 +97,31 @@ class Navigation {
                 }
             });
         });
+    }
+    
+    setupMobileMenu() {
+        if (this.navToggle) {
+            this.navToggle.addEventListener('click', () => {
+                this.navMenu.classList.toggle('active');
+                this.navToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            this.navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    this.navMenu.classList.remove('active');
+                    this.navToggle.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!this.navbar.contains(e.target)) {
+                    this.navMenu.classList.remove('active');
+                    this.navToggle.classList.remove('active');
+                }
+            });
+        }
     }
 }
 
