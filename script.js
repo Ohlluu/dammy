@@ -231,9 +231,9 @@ class PerformanceOptimizer {
     
     preloadCriticalImages() {
         const criticalImages = [
-            'https://images.unsplash.com/photo-1604654894610-df63bc536371',
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b',
-            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da'
+            'assets/Artistic Design.jpg',
+            'assets/Eyelash Extensions.jpg.webp',
+            'assets/Studio.jpg.webp'
         ];
         
         criticalImages.forEach(src => {
@@ -572,20 +572,4 @@ additionalStyles.textContent = `
 `;
 document.head.appendChild(additionalStyles);
 
-// Lagos-specific optimizations
-if (navigator.connection) {
-    const connection = navigator.connection;
-    
-    // Optimize for slower connections common in Lagos
-    if (connection.effectiveType === '2g' || connection.effectiveType === '3g') {
-        console.log('📱 Optimizing for slower connection...');
-        
-        // Reduce image quality for slower connections
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (img.src.includes('unsplash.com')) {
-                img.src = img.src.replace('w=400&h=400', 'w=300&h=300&q=80');
-            }
-        });
-    }
-}
+// Lagos-specific optimizations - now using local assets for better performance
