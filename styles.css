@@ -232,6 +232,7 @@ body {
 /* Mobile menu styles */
 @media (max-width: 767px) {
     .nav-menu {
+        display: flex;
         position: fixed;
         top: 80px;
         left: 0;
